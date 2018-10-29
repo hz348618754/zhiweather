@@ -66,7 +66,11 @@ public class DailyAdapter extends BaseAdapter{
 
         DailyBean dailyBean = mDatas.get(position);
         holder.tmp.setText(dailyBean.getTmp_max()+"/"+dailyBean.getTmp_min()+"℃");
-        holder.time.setText(dateFormate(dailyBean.getDate()));
+        if(position==0){
+            holder.time.setText("今天");
+        }else {
+            holder.time.setText(dateFormate(dailyBean.getDate()));
+        }
         holder.weather.setText(dailyBean.getCond_txt_d());
         switch (Integer.parseInt(dailyBean.getCond_code_d())){
             case 100:holder.img.setImageResource(R.mipmap.p100);break;
@@ -156,7 +160,6 @@ public class DailyAdapter extends BaseAdapter{
         result = sdf.format(mDate);
         return result;
     }
-
 
     private class ViewHolder{
         TextView time;

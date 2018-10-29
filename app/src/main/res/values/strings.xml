@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">zhiweather</string>
+    <string name="title_activity_air_quality">AirQuality</string>
 </resources>

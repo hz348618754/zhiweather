@@ -63,6 +63,21 @@ public class ParseJSON {
         return mapBasic;
     }
 
+    public static Map<String,String> parseJsonQuality(String jsonData) {
+        Map<String,String> airQualityBeanMap = new HashMap<>();
+        try{
+            JSONObject object = new JSONObject(jsonData);
+            JSONArray obj = object.getJSONArray("HeWeather6");
+            Gson gson = new Gson();
+            airQualityBeanMap = gson.fromJson(obj.getJSONObject(0).getJSONObject("air_now_city").toString(),
+                    new TypeToken<Map<String,String>>(){
+            }.getType());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return airQualityBeanMap;
+    }
+
     public static List<DailyBean> parseJsonDaily(String jsonData){
         List<DailyBean> dailyBeanList = new ArrayList<>();
             try {
@@ -92,4 +107,6 @@ public class ParseJSON {
         }
         return hourlyBeanList;
     }
+
+
 }
