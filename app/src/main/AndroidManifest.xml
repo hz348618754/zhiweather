@@ -31,25 +31,36 @@
         android:theme="@android:style/Theme.Light.NoTitleBar">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="51c85c7783070292504a1b0c57498e02"></meta-data>
+            android:value="51c85c7783070292504a1b0c57498e02" />
 
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote"></service>
+            android:process=":remote" />
 
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".AirQuality"
-            android:label="@string/title_activity_air_quality"></activity>
+            android:label="@string/title_activity_air_quality" />
+
+        <service
+            android:name=".LocationService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

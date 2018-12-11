@@ -211,6 +211,14 @@
                 android:gravity="right"
                 android:paddingRight="10dp"
                 android:text="999" />
+
         </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btn_backToMain"
+            android:layout_gravity="center"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@mipmap/cancel" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
