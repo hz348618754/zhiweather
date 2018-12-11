@@ -8,14 +8,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@mipmap/welcome">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="这是欢迎页"
-            android:textSize="40dp"
-            android:gravity="center"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -14,6 +14,7 @@ import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -59,13 +60,21 @@ public class MainActivity extends Activity {
             }
         });
 
+
+    }
+
+    //禁用返回键
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            return true;
+        }
+        return false;
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
     }
-
 
 
     //初始化组件
@@ -132,8 +141,5 @@ public class MainActivity extends Activity {
         });
 
     }
-
-
-
 
 }

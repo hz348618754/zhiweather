@@ -70,7 +70,6 @@ public class WelcomeActivity extends Activity {
         stopService(new Intent(WelcomeActivity.this, LocationReceiver.class));
     }
 
-
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {

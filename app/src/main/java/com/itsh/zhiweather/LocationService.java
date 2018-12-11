@@ -3,7 +3,9 @@ package com.itsh.zhiweather;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.os.Looper;
 import android.util.Log;
+import android.widget.Toast;
 
 public class LocationService extends Service {
     String city;
@@ -23,10 +25,21 @@ public class LocationService extends Service {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                Intent intent = new Intent();
-                intent.putExtra("city", city);
-                intent.setAction("com.itsh.zhiweather.LocationService");
-                sendBroadcast(intent);
+                if (!city.equals("")){
+                    Looper.prepare();
+                    Toast.makeText(getApplicationContext(),"Service定位成功！",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent();
+                    intent.putExtra("city", city);
+                    intent.setAction("com.itsh.zhiweather.LocationService");
+                    sendBroadcast(intent);
+                    Looper.loop();
+                }else {
+                    Looper.prepare();
+                    Toast.makeText(getApplicationContext(),"Service定位失败！",Toast.LENGTH_SHORT).show();
+                    Looper.loop();
+                    //待添加后续处理操作
+                }
+
             }
         }).start();
     }
