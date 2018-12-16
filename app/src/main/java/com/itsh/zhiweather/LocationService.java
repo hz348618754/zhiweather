@@ -39,7 +39,6 @@ public class LocationService extends Service {
                     Looper.loop();
                     //待添加后续处理操作
                 }
-
             }
         }).start();
     }
@@ -51,7 +50,7 @@ public class LocationService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
+        // TODO: Return the com munication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
     }
 }

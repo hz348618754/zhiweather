@@ -24,7 +24,7 @@ import java.util.Map;
  */
 
 public class ParseJSON {
-
+    //解析实况天气
     public static Map<String,String> parseJsonNow(String jsonData){
         Map<String,String> mapNow = new HashMap<>();
         try{
@@ -43,7 +43,7 @@ public class ParseJSON {
         }
         return mapNow;
     }
-
+    //解析基础信息
     public static Map<String,String> parseJsonBasic(String jsonData){
         Map<String,String> mapBasic = new HashMap<>();
         try{
@@ -62,7 +62,7 @@ public class ParseJSON {
         }
         return mapBasic;
     }
-
+    //解析空气质量
     public static Map<String,String> parseJsonQuality(String jsonData) {
         Map<String,String> airQualityBeanMap = new HashMap<>();
         try{
@@ -77,7 +77,7 @@ public class ParseJSON {
         }
         return airQualityBeanMap;
     }
-
+    //解析7天内天气
     public static List<DailyBean> parseJsonDaily(String jsonData){
         List<DailyBean> dailyBeanList = new ArrayList<>();
             try {
@@ -93,7 +93,7 @@ public class ParseJSON {
 
         return dailyBeanList;
     }
-
+    //解析逐小时预报
     public static List<HourlyBean> parseJsonHourly(String jsonData) {
         List<HourlyBean> hourlyBeanList = new ArrayList<>();
         try {
@@ -107,6 +107,4 @@ public class ParseJSON {
         }
         return hourlyBeanList;
     }
-
-
 }

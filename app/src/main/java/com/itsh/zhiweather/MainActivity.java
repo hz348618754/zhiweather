@@ -76,7 +76,6 @@ public class MainActivity extends Activity {
         super.onDestroy();
     }
 
-
     //初始化组件
     private void initView() {
         tv_location = (TextView) findViewById(R.id.tv_location);
@@ -84,13 +83,11 @@ public class MainActivity extends Activity {
         weather_now = (TextView) findViewById(R.id.tv_weather_now);
         lv_daily = (ListView) findViewById(R.id.lv_daily);
         rv_hourly = (RecyclerView) findViewById(R.id.rv_hourly);
-        linearLayout_top_right = (LinearLayout) findViewById(R.id.top_right);
-
         LinearLayoutManager linearLayoutManager_hourly = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         rv_hourly.setLayoutManager(linearLayoutManager_hourly);
+        linearLayout_top_right = (LinearLayout) findViewById(R.id.top_right);
 
     }
-
 
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
@@ -98,14 +95,8 @@ public class MainActivity extends Activity {
                 case TEMP_NOW:
                     Map<String, String> mapNow = new HashMap<>();
                     Map<String, String> mapBasic = new HashMap<>();
-
-                    List<DailyBean> listDaily = new ArrayList<>();
-                    List<HourlyBean> listHourly = new ArrayList<>();
-
                     mapNow = ParseJSON.parseJsonNow((String) msg.obj);
                     mapBasic = ParseJSON.parseJsonBasic((String) msg.obj);
-                    listDaily = ParseJSON.parseJsonDaily((String) msg.obj);
-                    listHourly = ParseJSON.parseJsonHourly((String) msg.obj);
                     weather.setTemperature(mapNow.get("tmp"));
                     weather.setLocation(mapBasic.get("location"));
                     weather.setWeather(mapNow.get("cond_txt") + "\t\t" + mapNow.get("wind_dir"));
@@ -113,6 +104,10 @@ public class MainActivity extends Activity {
                     tv_location.setText(weather.getLocation());
                     weather_now.setText(weather.getWeather());
 
+                    List<DailyBean> listDaily = new ArrayList<>();
+                    List<HourlyBean> listHourly = new ArrayList<>();
+                    listDaily = ParseJSON.parseJsonDaily((String) msg.obj);
+                    listHourly = ParseJSON.parseJsonHourly((String) msg.obj);
                     rv_hourly.setAdapter(new HourlyAdapter(MainActivity.this, listHourly));
                     DailyAdapter adapter = new DailyAdapter(MainActivity.this, listDaily);
                     lv_daily.setAdapter(adapter);
@@ -121,11 +116,10 @@ public class MainActivity extends Activity {
 
     };
 
-
     private void getTemperature() {
         String cityName = getCity;
-
         String weatherUrl = "https://free-api.heweather.com/s6/weather?location=" + cityName + "&key=3741d12c649547f0bbc675e484c49e32";
+
         HttpUtil.sendHttpRequest(weatherUrl, new HttpCallbackListener() {
             public void onFinish(String response) {
                 Message message = new Message();

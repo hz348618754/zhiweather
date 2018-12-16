@@ -8,7 +8,7 @@ public class HourlyBean {
     private String time;        //预报时间
     private String tmp;         //温度
     private String wind_dir,wind_sc;        //风向
-    private String cond_txt,cond_code;   //白天、夜间天气状况
+    private String cond_txt,cond_code;   //天气状况、天气状况代码
     //构造器
     public HourlyBean() {
     }
